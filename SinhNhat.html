@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chúc mừng sinh nhật Vương Bảo Hân</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#fff0f6;
+  --bg2:#fff6f0;
+  --accent:#ff5972;
+  --text:#2b2b2b;
+
+  /* màu chocolate */
+  --choco:#4d260f;
+  --choco-gloss:#7a4326;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  font-family:'Montserrat';
+  overflow:hidden;
+  position:relative;
+}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{
+  width:100%;max-width:980px;border-radius:20px;padding:28px 30px;
+  background:rgba(255,255,255,0.85);
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+}
+.top{display:flex;gap:20px;align-items:center}
+
+/* Avatar */
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:url('baohan.jpg') center/cover no-repeat;
+  box-shadow:
+      0 0 0 4px #ff8fa8,
+      0 0 15px 6px rgba(255,120,150,0.55),
+      0 0 30px 10px rgba(255,90,120,0.35);
+  flex-shrink:0;
+}
+
+.title h1{margin:0;font-family:'Playfair Display';font-size:34px}
+.title p{margin-top:6px;font-size:15px;color:#5c5c5c}
+.message{margin-top:18px;font-size:17px;line-height:1.6}
+.message .name{color:var(--accent);font-weight:700}
+.scene{display:flex;gap:28px;margin-top:22px;align-items:flex-end}
+.cake{
+  flex:0 0 260px;
+  background:linear-gradient(180deg,#ffffff,#fff8f4);
+  border-radius:18px;
+  padding:24px 20px 18px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.09);
+  position:relative;
+  overflow:hidden;
+}
+.layers{position:relative;height:190px}
+
+/* tầng bánh */
+.layer{
+  height:48px;
+  border-radius:14px;
+  margin:10px 0;
+  position:relative;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* pastel đẹp hơn – mềm, không chói */
+.one{ background:linear-gradient(180deg,#ffd7e1,#ffbaca); }
+.two{ background:linear-gradient(180deg,#ffe2c3,#ffce99); }
+.three{ background:linear-gradient(180deg,#e7f3ff,#d4e7ff); }
+
+/* kem viền */
+.layer::before{
+  content:"";
+  position:absolute;
+  top:-12px;left:0;
+  width:100%;height:15px;
+  background:linear-gradient(180deg,#ffffff,#ffeef3);
+  border-radius:10px;
+  filter:blur(2px);
+}
+
+/* ===== CHOCOLATE MỚI – KHÔNG LOANG, BÓNG MỊN ===== */
+.choco{
+  position:absolute;
+  top:0; left:50%; transform:translateX(-50%);
+  width:115%;
+  height:34px;
+  background:linear-gradient(180deg,var(--choco),var(--choco-gloss));
+  border-bottom-left-radius:40px;
+  border-bottom-right-radius:40px;
+  box-shadow:0 3px 8px rgba(0,0,0,0.35) inset;
+}
+.choco::before,
+.choco::after{
+  content:"";
+  position:absolute;
+  background:var(--choco);
+  border-radius:50%;
+}
+.choco::before{
+  bottom:-10px; left:22%;
+  width:26px; height:16px;
+}
+.choco::after{
+  bottom:-8px; right:22%;
+  width:20px; height:14px;
+}
+
+/* ===== DÂU NÂNG CẤP – ĐỎ ĐẸP, FORM TRÒN HƠN ===== */
+.strawberry{
+  width:22px;height:25px;
+  background:linear-gradient(180deg,#ff6075,#ff3a52);
+  border-radius:50% 50% 55% 55%;
+  position:absolute;top:-20px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.25);
+}
+.strawberry::after{
+  content:"";
+  position:absolute;
+  top:-7px; left:4px;
+  width:14px;height:11px;
+  background:#3fa34d;
+  border-radius:50%;
+}
+
+/* ===== SPRINKLES MỚI – RÕ HƠN, SÁNG HƠN ===== */
+.sprinkle{
+  position:absolute;
+  width:4px;height:10px;
+  border-radius:3px;
+  transform:rotate(15deg);
+  opacity:0.95;
+}
+.s1{background:#ff8fab}
+.s2{background:#ffc47a}
+.s3{background:#9ddaff}
+.s4{background:#b8ff97}
+
+/* ===== NẾN ===== */
+.candles{
+  position:absolute;
+  left:50%;transform:translateX(-50%);
+  bottom:100%;
+  display:flex;
+  gap:10px;
+}
+.candle{
+  width:10px;height:30px;
+  background:#ff8aa0;
+  border-radius:4px;
+  position:relative;
+}
+.flame{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%, #ffd86b, #ff8a5b);
+  filter:drop-shadow(0 6px 8px rgba(255,138,91,0.35));
+  animation:flicker 0.25s infinite alternate;
+}
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1);opacity:0.85;}
+  to{transform:translateX(-50%) scale(1.15);opacity:1;}
+}
+
+/* note */
+.note{
+  background:linear-gradient(180deg, rgba(255,89,114,0.07), rgba(255,89,114,0.04));
+  padding:16px;border-radius:12px
+}
+.next-text{
+  text-align:center;font-size:20px;margin-top:12px;
+  font-weight:600;color:#ff5972;cursor:pointer;
+}
+
+/* trái tim */
+.heart{
+  position:fixed;
+  top:-20px;
+  width:18px;height:18px;
+  background:var(--accent);
+  transform:rotate(-45deg);
+  opacity:0.8;
+  border-radius:4px;
+  pointer-events:none;
+}
+.heart:before,.heart:after{
+  content:''; position:absolute; width:18px;height:18px; background:var(--accent); border-radius:50%;
+}
+.heart:before{top:-9px}
+.heart:after{left:9px}
+
+/* ảnh */
+.image-container{
+  position:fixed;
+  top:0; left:0;
+  width:100vw;height:100vh;
+  display:none;align-items:center;justify-content:center;
+  overflow:hidden;z-index:500;pointer-events:none;
+}
+.image-strip{
+  display:flex;
+  will-change: transform;
+}
+.image-strip img{
+  height:80vh;flex-shrink:0;
+  object-fit:cover;
+  border: 5px solid #ff5972;
+  border-radius:12px;
+  margin:0 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  <div class="card">
+
+    <div class="top">
+      <div class="avatar"></div>
+
+      <div class="title">
+        <h1>Chúc mừng sinh nhật, <span class="name">Vương Bảo Hân</span> 🎂</h1>
+        <p>Ngày 25 tháng 12 — một ngày thật đặc biệt.</p>
+      </div>
+
+      <div style="text-align:right">
+        <div style="font-size:13px;color:#888">25/12</div>
+        <div style="font-size:12px;color:#aaa">Sinh nhật</div>
+      </div>
+    </div>
+
+    <div class="message">
+      Chúc mừng sinh nhật ní nha.  
+      Tui hy vọng tuổi mới của ní sẽ có thật nhiều niềm vui, dễ thương và ít phiền muộn hơn.  
+      Không biết từ bao giờ, chỉ cần nhìn thấy tên ní hiện lên là tự nhiên trong lòng tui vui hơn.  
+      Tui không biết là ní có thích món quà không nhưng mà hiện tại tôi chỉ có thể làm được như vậy thôi thông cảm nhe.
+    </div>
+
+    <div class="scene">
+
+      <div class="cake">
+
+        <div class="layers">
+
+          <!-- Nến -->
+          <div class="candles">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+          </div>
+
+          <!-- Chocolate -->
+          <div class="choco"></div>
+
+          <!-- Sprinkles -->
+          <div class="sprinkle s1" style="top:22px; left:55px"></div>
+          <div class="sprinkle s2" style="top:48px; left:125px"></div>
+          <div class="sprinkle s3" style="top:70px; left:90px"></div>
+          <div class="sprinkle s4" style="top:40px; left:175px"></div>
+          <div class="sprinkle s2" style="top:100px; left:40px"></div>
+          <div class="sprinkle s1" style="top:123px; left:160px"></div>
+          <div class="sprinkle s3" style="top:145px; left:100px"></div>
+
+          <!-- Dâu -->
+          <div class="strawberry" style="left:45px"></div>
+          <div class="strawberry" style="left:120px"></div>
+          <div class="strawberry" style="left:185px"></div>
+
+          <!-- Tầng bánh -->
+          <div class="layer three"></div>
+          <div class="layer two"></div>
+          <div class="layer one"></div>
+
+        </div>
+
+        <div style="margin-top:12px;font-weight:600">Bánh kem dành cho người đẹp nhất hôm nay</div>
+        <div style="font-size:13px;color:#777;margin-top:6px">Nhớ call tui nhe ✨</div>
+      </div>
+
+      <div class="right">
+        <div class="note">
+          <h3>Gửi ní — người khiến mọi thứ vui hơn</h3>
+          <p>
+            Nếu hôm nay ní cần ai đó khiến ngày này đặc biệt hơn thì đừng nhắn tui nha call thì được hihi.
+            Sinh nhật ní mà sao tui thấy hồi hộp ghê chắc vì muốn nói điều gì đó mà chưa dám.
+            Chúc cậu ngày hôm nay thật đẹp. Còn phần đặc biệt nhất để tui giữ lại khi gặp ní.
+          </p>
+        </div>
+
+        <div class="next-text" id="nextBtn">Tiếp theo</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+function spawnHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  const size=14+Math.random()*10;
+  h.style.width=size+"px";h.style.height=size+"px";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  const duration=4000+Math.random()*3000;
+  h.animate([
+    { transform:"translateY(0) rotate(-45deg)", opacity:0.8 },
+    { transform:"translateY(100vh) rotate(-45deg)", opacity:0 }
+  ],{duration:duration,easing:"linear"});
+  setTimeout(()=>h.remove(),duration);
+}
+setInterval(spawnHeart,500);
+</script>
+
+<div class="image-container" id="imageContainer">
+  <div class="image-strip" id="imageStrip">
+    <img src="cmsn1.jpg" />
+    <img src="cmsn2.jpg" />
+    <img src="cmsn3.jpg" />
+    <img src="cmsn4.jpg" />
+    <img src="cmsn5.jpg" />
+    <img src="cmsn6.jpg" />
+  </div>
+</div>
+
+<script>
+const nextBtn=document.getElementById('nextBtn');
+const strip=document.getElementById('imageStrip');
+const container=document.getElementById('imageContainer');
+const audio=new Audio('cmsn4.mp3');
+
+nextBtn.addEventListener('click',()=>{
+  container.style.display='flex';
+  const duration=7000;
+  strip.style.transform=`translateX(${window.innerWidth}px)`;
+  const anim=strip.animate([
+    {transform:`translateX(${window.innerWidth}px)`},
+    {transform:`translateX(-${strip.scrollWidth}px)`}
+  ],{
+    duration:duration,
+    easing:'linear',
+    fill:'forwards'
+  });
+  anim.onfinish=()=>audio.play();
+});
+</script>
+
+</body>
+</html>

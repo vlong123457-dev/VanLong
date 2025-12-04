@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chúc mừng sinh nhật — Thư</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg,#ffe5ef,#fff6fb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .letter {
+    width: 420px;
+    height: 300px;
+    background: #ffb6c9;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(255, 80, 120, 0.55);
+    transition: transform 0.45s, box-shadow 0.45s;
+    overflow: hidden;
+    border: 5px solid #ff8fb6;
+  }
+
+  .letter:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 18px 55px rgba(255, 80, 120, 0.7);
+  }
+
+  .letter.opening {
+    animation: openLetter 0.8s forwards ease;
+  }
+
+  @keyframes openLetter {
+    0% { transform: scale(1); opacity: 1; }
+    40% { transform: scale(1.25); }
+    100% { transform: scale(0); opacity: 0; }
+  }
+
+  .letter-text {
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  /* ❤️ TRÁI TIM EMOJI ĐẸP NGAY BỨC THƯ ❤️ */
+  .heart-img {
+    position: absolute;
+    bottom: 18px;
+    font-size: 95px;
+    z-index: 1;
+    animation: heartPulse 1.7s infinite ease-in-out;
+    filter: drop-shadow(0 5px 12px rgba(255,0,120,0.45));
+    pointer-events: none;
+  }
+
+  @keyframes heartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+
+  /* TRÁI TIM BAY */
+  .floating-heart {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    transform: rotate(-45deg);
+    background: #ff2d55;
+    border-radius: 8px;
+    animation: fly 2.6s ease-out forwards;
+    pointer-events: none;
+    box-shadow: inset -6px -8px 12px rgba(0,0,0,0.25),
+                0 0 10px rgba(255,0,130,0.9);
+  }
+
+  .floating-heart::before,
+  .floating-heart::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #ff2d55;
+    border-radius: 50%;
+  }
+
+  .floating-heart::before { top: -20px; left: 0; }
+  .floating-heart::after { left: 20px; top: 0; }
+
+  @keyframes fly {
+    0% { transform: translateY(0) rotate(-45deg) scale(0.7); opacity: 1; }
+    50% { transform: translateY(-140px) rotate(-30deg) scale(1.1); }
+    100% { transform: translateY(-260px) rotate(-60deg) scale(1.35); opacity: 0; }
+  }
+
+  .login-box {
+    display: none;
+    width: 100%;
+    max-width: 480px;
+    padding: 28px;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 10px 35px rgba(255,0,90,0.15);
+    margin-top: 24px;
+    animation: fadeInBox 0.8s ease forwards;
+  }
+
+  @keyframes fadeInBox {
+    0% { opacity: 0; transform: translateY(20px);}
+    100% { opacity: 1; transform: translateY(0);}
+  }
+
+  #account {
+    font-weight: 700;
+    color: #ff408b;
+    font-size: 20px;
+    min-height: 26px;
+  }
+
+  input[type=text] {
+    width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #eee;
+    font-size: 16px; font-weight: 700; color: #ff408b;
+  }
+
+  .row { display: flex; gap: 10px; margin-top: 10px }
+  .btn { flex: 1; padding: 10px 12px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
+  .btn.login { background: #ff5972; color: white; }
+  .btn.exit { background: transparent; border: 1px solid #eee; }
+  .msg { height: 20px; color: #d23a4a; margin-top: 8px; }
+
+  .typing-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: charAppear 0.35s forwards;
+  }
+
+  @keyframes charAppear {
+    0% { opacity: 0; transform: translateY(-20px);}
+    60% { opacity: 1; transform: translateY(5px);}
+    100% { opacity: 1; transform: translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<audio id="openSound">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_cb9deac89a.mp3">
+</audio>
+
+<div class="letter" id="letter">
+  <div class="letter-text">Nhấn để mở thư</div>
+
+  <!-- ❤️ Emoji heart -->
+  <div class="heart-img">❤️</div>
+</div>
+
+<div class="login-box" id="loginBox">
+  <h2>Đăng nhập</h2>
+  <p class="lead">Nhập mật khẩu để tiếp tục tới trang chúc mừng.</p>
+
+  <div class="field">
+    <label>Tài khoản</label>
+    <div id="account"></div>
+  </div>
+
+  <div class="field">
+    <label>Mật khẩu</label>
+    <input type="text" id="password" placeholder="Nhập mật khẩu" />
+  </div>
+
+  <div class="row">
+    <button class="btn login" id="loginBtn">Đăng nhập</button>
+    <button class="btn exit" id="exitBtn">Thoát</button>
+  </div>
+
+  <div class="msg" id="msg"></div>
+</div>
+
+<script>
+const letter = document.getElementById('letter');
+const loginBox = document.getElementById('loginBox');
+const accountEl = document.getElementById('account');
+const sound = document.getElementById('openSound');
+const nameStr = 'VuongBaoHan❤';
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.style.left = (Math.random() * window.innerWidth) + "px";
+  heart.style.bottom = "0px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 2600);
+}
+
+letter.addEventListener('click', () => {
+  sound.play();
+  letter.classList.add('opening');
+
+  for (let n = 0; n < 60; n++) {
+    setTimeout(createHeart, n * 45);
+  }
+
+  setTimeout(() => {
+    letter.style.display = 'none';
+    loginBox.style.display = 'block';
+    typeNameSmooth();
+  }, 850);
+});
+
+let i = 0;
+function typeNameSmooth(){
+  if(i < nameStr.length){
+    const span = document.createElement('span');
+    span.textContent = nameStr[i];
+    span.className = 'typing-char';
+    span.style.animationDelay = (i*0.12) + 's';
+    accountEl.appendChild(span);
+    i++;
+    setTimeout(typeNameSmooth, 120);
+  }
+}
+
+const loginBtn = document.getElementById('loginBtn');
+const pwd = document.getElementById('password');
+const msg = document.getElementById('msg');
+const CORRECT = '25122007';
+
+loginBtn.addEventListener('click', () => {
+  msg.textContent = '';
+  if(pwd.value === CORRECT){
+    window.location.href = 'SinhNhat_VuongBaoHan.html';
+  } else {
+    msg.textContent = 'Sai rồi thử lại đi';
+    loginBox.animate([
+      { transform: 'translateX(0)' },
+      { transform: 'translateX(-8px)' },
+      { transform: 'translateX(8px)' },
+      { transform: 'translateX(0)' }
+    ], { duration: 300 });
+  }
+});
+
+document.getElementById('exitBtn').addEventListener('click', () => {
+  window.location.href = 'about:blank';
+});
+
+pwd.addEventListener('keydown', e => { if(e.key==='Enter') loginBtn.click(); });
+</script>
+
+</body>
+</html>
