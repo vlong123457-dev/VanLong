@@ -50,7 +50,7 @@ body{
 .title p{margin-top:6px;font-size:15px;color:#5c5c5c}
 .message{margin-top:18px;font-size:17px;line-height:1.6}
 .message .name{color:var(--accent);font-weight:700}
-.scene{display:flex;gap:28px;margin-top:22px;align-items:flex-end}
+.scene{display:flex;gap:28px;margin-top:22px;align-items:flex-start}
 .cake{
   flex:0 0 260px;
   background:linear-gradient(180deg,#ffffff,#fff8f4);
@@ -88,7 +88,7 @@ body{
   filter:blur(2px);
 }
 
-/* ===== CHOCOLATE MỚI – KHÔNG LOANG, BÓNG MỊN ===== */
+/* chocolate */
 .choco{
   position:absolute;
   top:0; left:50%; transform:translateX(-50%);
@@ -115,7 +115,7 @@ body{
   width:20px; height:14px;
 }
 
-/* ===== DÂU NÂNG CẤP – ĐỎ ĐẸP, FORM TRÒN HƠN ===== */
+/* dâu */
 .strawberry{
   width:22px;height:25px;
   background:linear-gradient(180deg,#ff6075,#ff3a52);
@@ -132,7 +132,7 @@ body{
   border-radius:50%;
 }
 
-/* ===== SPRINKLES MỚI – RÕ HƠN, SÁNG HƠN ===== */
+/* sprinkles */
 .sprinkle{
   position:absolute;
   width:4px;height:10px;
@@ -145,7 +145,7 @@ body{
 .s3{background:#9ddaff}
 .s4{background:#b8ff97}
 
-/* ===== NẾN ===== */
+/* nến */
 .candles{
   position:absolute;
   left:50%;transform:translateX(-50%);
@@ -171,16 +171,6 @@ body{
   to{transform:translateX(-50%) scale(1.15);opacity:1;}
 }
 
-/* note */
-.note{
-  background:linear-gradient(180deg, rgba(255,89,114,0.07), rgba(255,89,114,0.04));
-  padding:16px;border-radius:12px
-}
-.next-text{
-  text-align:center;font-size:20px;margin-top:12px;
-  font-weight:600;color:#ff5972;cursor:pointer;
-}
-
 /* trái tim */
 .heart{
   position:fixed;
@@ -198,24 +188,31 @@ body{
 .heart:before{top:-9px}
 .heart:after{left:9px}
 
-/* ảnh */
-.image-container{
-  position:fixed;
-  top:0; left:0;
-  width:100vw;height:100vh;
-  display:none;align-items:center;justify-content:center;
-  overflow:hidden;z-index:500;pointer-events:none;
-}
-.image-strip{
+/* bên phải bánh kem */
+.right{
+  flex:1;
   display:flex;
-  will-change: transform;
+  flex-direction:column;
+  gap:12px;
+  margin-top:20px;
 }
-.image-strip img{
-  height:80vh;flex-shrink:0;
-  object-fit:cover;
-  border: 5px solid #ff5972;
-  border-radius:12px;
-  margin:0 5px;
+
+/* thiệp */
+.card-item{
+  font-weight:600;
+}
+.card-content{
+  font-size:15px;
+  line-height:1.5;
+}
+#playMusicBtn{
+  cursor:pointer;
+  padding:12px 20px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#ff5972,#ff8aa0);
+  color:#fff;
+  text-align:center;
+  font-weight:600;
 }
 </style>
 </head>
@@ -288,16 +285,20 @@ body{
       </div>
 
       <div class="right">
-        <div class="note">
-          <h3>Gửi ní — người khiến mọi thứ vui hơn</h3>
-          <p>
-            Nếu hôm nay ní cần ai đó khiến ngày này đặc biệt hơn thì đừng nhắn tui nha call thì được hihi.
-            Sinh nhật ní mà sao tui thấy hồi hộp ghê chắc vì muốn nói điều gì đó mà chưa dám.
-            Chúc cậu ngày hôm nay thật đẹp. Còn phần đặc biệt nhất để tui giữ lại khi gặp ní.
-          </p>
+        <!-- Ô tấm thiệp -->
+        <div class="card-item" id="cardBtn">
+          📬 Nhấn để mở thiệp
         </div>
 
-        <div class="next-text" id="nextBtn">Tiếp theo</div>
+        <div class="card-content" id="cardContent" style="display:none;">
+          <!-- Bạn viết nội dung thư vào đây -->
+          Chúc mừng sinh nhật, ní! Mong tuổi mới thật vui vẻ và hạnh phúc! 🎉
+        </div>
+
+        <!-- Nút phát nhạc -->
+        <div id="playMusicBtn">
+          🎵 Phát nhạc
+        </div>
       </div>
 
     </div>
@@ -306,6 +307,7 @@ body{
 </div>
 
 <script>
+// trái tim bay
 function spawnHeart(){
   const h=document.createElement("div");
   h.className="heart";
@@ -321,38 +323,25 @@ function spawnHeart(){
   setTimeout(()=>h.remove(),duration);
 }
 setInterval(spawnHeart,500);
-</script>
 
-<div class="image-container" id="imageContainer">
-  <div class="image-strip" id="imageStrip">
-    <img src="cmsn1.jpg" />
-    <img src="cmsn2.jpg" />
-    <img src="cmsn3.jpg" />
-    <img src="cmsn4.jpg" />
-    <img src="cmsn5.jpg" />
-    <img src="cmsn6.jpg" />
-  </div>
-</div>
+// thiệp
+const cardBtn = document.getElementById('cardBtn');
+const cardContent = document.getElementById('cardContent');
+const playMusicBtn = document.getElementById('playMusicBtn');
+const audio = new Audio('cmsn4.mp3');
 
-<script>
-const nextBtn=document.getElementById('nextBtn');
-const strip=document.getElementById('imageStrip');
-const container=document.getElementById('imageContainer');
-const audio=new Audio('cmsn4.mp3');
+cardBtn.addEventListener('click', () => {
+  if(cardContent.style.display === 'none'){
+    cardContent.style.display = 'block';
+    cardBtn.textContent = "✉️ Đóng thiệp";
+  } else {
+    cardContent.style.display = 'none';
+    cardBtn.textContent = "📬 Nhấn để mở thiệp";
+  }
+});
 
-nextBtn.addEventListener('click',()=>{
-  container.style.display='flex';
-  const duration=7000;
-  strip.style.transform=`translateX(${window.innerWidth}px)`;
-  const anim=strip.animate([
-    {transform:`translateX(${window.innerWidth}px)`},
-    {transform:`translateX(-${strip.scrollWidth}px)`}
-  ],{
-    duration:duration,
-    easing:'linear',
-    fill:'forwards'
-  });
-  anim.onfinish=()=>audio.play();
+playMusicBtn.addEventListener('click', () => {
+  audio.play();
 });
 </script>
 
