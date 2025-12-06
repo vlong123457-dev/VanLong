@@ -56,30 +56,17 @@ body{
   align-items:flex-start;
 }
 
-/* ===== CSS Bánh Kem (Giữ nguyên như bạn yêu cầu) ===== */
+/* ===== ẢNH BÁNH KEM ===== */
 .cake{
   flex:0 0 280px;
   background:linear-gradient(180deg,#fff8f4,#ffeef3);
   border-radius:25px;
-  padding:24px 20px 18px;
+  padding:0;
   text-align:center;
   box-shadow:0 20px 40px rgba(0,0,0,0.25);
   position:relative;
   overflow:hidden;
 }
-.layers{
-  position:relative;height:240px;
-}
-.layer{
-  height:60px;
-  border-radius:20px;
-  margin:10px 0;
-  position:relative;
-  background:linear-gradient(180deg,#ffd7e1,#ffbaca);
-  box-shadow:0 6px 15px rgba(0,0,0,0.1) inset,0 5px 10px rgba(0,0,0,0.15);
-}
-.layer.two{background:linear-gradient(180deg,#ffe2c3,#ffce99);}
-.layer.three{background:linear-gradient(180deg,#e7f3ff,#d4e7ff);}
 
 /* Nút phát nhạc */
 #playMusicBtn{
@@ -116,46 +103,51 @@ body{
   align-items: center;
 }
 
-/* Thư */
-.card-container{
-  position:relative;
-  width:120px;
-  height:70px;
-  perspective:1000px;
-  cursor:pointer;
-  margin-bottom:12px;
-}
-.card-front, .card-back{
-  position:absolute;
-  width:100%;
-  height:100%;
-  border-radius:16px;
-  display:flex;
+
+/* ⭐⭐ THƯ DẠNG POPUP ⭐⭐ */
+#letterPopup{
+  position:fixed;
+  top:0;left:0;
+  width:100vw;height:100vh;
+  background:rgba(0,0,0,0.45);
+  display:none;
   align-items:center;
   justify-content:center;
-  backface-visibility:hidden;
+  z-index:999;
+}
+
+.letter-box{
+  width:90%;
+  max-width:480px;
+  background:#ffe6ef;
+  border:4px solid #ffb6c9;
+  border-radius:18px;
+  padding:26px 24px;
+  font-size:17px;
+  line-height:1.6;
+  box-shadow:0 10px 40px rgba(0,0,0,0.25);
+  animation: popupShow .4s ease;
+}
+
+@keyframes popupShow{
+  from{transform:scale(0.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.letter-footer{
+  margin-top:18px;
+  display:flex;
+  justify-content:space-between;
   font-weight:600;
-  font-size:28px;
-  transition: transform 1s, width 1s, height 1s;
-  text-align:center;
-  padding:16px;
 }
-.card-front{
-  background:linear-gradient(135deg,#ffb6c1,#ff8aa0);
-  color:#fff;
+.letter-btn{
+  padding:8px 14px;
+  border-radius:8px;
+  border:2px solid #ff5972;
+  color:#ff5972;
+  cursor:pointer;
+  font-weight:600;
 }
-.card-back{
-  background:#fff6f0;
-  color:#333;
-  transform: rotateY(180deg);
-  font-size:22px;
-}
-.card-container.open{
-  width:340px;
-  height:220px;
-}
-.card-container.open .card-front{transform: rotateY(180deg);}
-.card-container.open .card-back{transform: rotateY(0deg);}
 
 /* Ảnh chạy */
 .image-container{
@@ -204,8 +196,8 @@ body{
 
     <div class="scene">
 
-      <!-- ⭐⭐⭐ BÁNH KEM = ẢNH banhkem.jpg ⭐⭐⭐ -->
-      <div class="cake" style="padding:0; overflow:hidden;">
+      <!-- ⭐ Ảnh bánh kem ⭐ -->
+      <div class="cake">
           <img src="banhkem.jpg" 
                style="width:100%;height:auto;display:block;border-radius:20px;">
           <div style="padding:12px 0;text-align:center;">
@@ -214,19 +206,19 @@ body{
           </div>
       </div>
 
-      <!-- Bên phải: thư + nhạc -->
+      <!-- Bên phải -->
       <div class="right-container">
         <div class="right-top">
-          <div class="card-container" id="cardContainer">
-            <div class="card-front">📩</div>
-            <div class="card-back">
-              Chúc mừng sinh nhật cậu nhé.<br>
-              Hôm nay là ngày rất đặc biệt là ngày mà một cô công chúa được sinh ra<br>
-              Tớ mong cậu sẽ có một năm thật nhiều niềm vui, nhiều điều dễ thương và luôn luôn rực rỡ giống như cách cậu xuất hiện trong cuộc sống của tớ vậy.<br>
-              Không biết từ bao giờ, mỗi lần nói chuyện với cậu tớ đều thấy ngày của mình sáng hơn chút xíu. Sinh nhật cậu, tui chỉ muốn gửi một chút điều dễ thương từ tui tới cậu, mong nó làm ngày hôm này của cậu vui hơn.<br>
-              Chúc cậu tuổi mới thật nhẹ nhàng, an yên, và… nếu được thì bớt làm tui chú ý quá, chứ cứ vậy hoài là tui càng nhớ cậu đấy.<br>
-              Sinh nhật vui nha, nàng công chúa nhỏ. ✨🎂
-            </div>
+
+          <!-- ⭐ Nút mở thư ⭐ -->
+          <div id="openLetterBtn" class="card-front" 
+               style="
+                   width:120px;height:70px;
+                   display:flex;align-items:center;justify-content:center;
+                   background:linear-gradient(135deg,#ffb6c1,#ff8aa0);
+                   color:white;border-radius:16px;font-size:26px;cursor:pointer;
+               ">
+            📩
           </div>
 
           <div id="playMusicBtn">🎵 Phát nhạc</div>
@@ -237,6 +229,28 @@ body{
 
     </div>
 
+  </div>
+</div>
+
+<!-- ⭐ POPUP THƯ ⭐ -->
+<div id="letterPopup">
+  <div class="letter-box">
+    <div style="font-size:18px;font-weight:600;">Gửi ní,</div>
+    <br>
+    Hôm nay là một ngày đặc biệt – ngày mà một cô công chúa xinh đẹp bước đến thế giới này.  
+    Tớ mong ní sẽ có thật nhiều niềm vui, nhiều điều dễ thương và luôn rực rỡ giống như cách ní xuất hiện trong cuộc sống của tui vậy.  
+    <br><br>
+    Không biết từ lúc nào, chỉ cần nói chuyện với ní một chút thôi là ngày của tui sáng hơn hẳn.  
+    Sinh nhật ní, tui không dám nói gì lớn lao, chỉ muốn gửi chút điều dễ thương này đến ní – mong nó làm ngày của ní đẹp thêm một chút.  
+    <br><br>
+    Chúc ní tuổi mới nhẹ nhàng, an yên… và nếu được thì bớt làm tui chú ý một xíu, chứ như này hoài tui càng nhớ ní mất.  
+    <br><br>
+    ✨ Chúc ní sinh nhật vui vẻ nha ✨
+    
+    <div class="letter-footer">
+      <div class="letter-btn" id="closeLetterBtn">Thoát</div>
+      <div style="color:#ff5972;font-weight:700;">— Tui</div>
+    </div>
   </div>
 </div>
 
@@ -268,22 +282,26 @@ function spawnHeart(){
 }
 setInterval(spawnHeart,500);
 
-// Mở thư
-const cardContainer=document.getElementById('cardContainer');
-cardContainer.addEventListener('click',()=>{cardContainer.classList.toggle('open');});
+// ===== POPUP THƯ =====
+const openLetterBtn=document.getElementById('openLetterBtn');
+const letterPopup=document.getElementById('letterPopup');
+const closeLetterBtn=document.getElementById('closeLetterBtn');
+
+openLetterBtn.onclick=()=>{ letterPopup.style.display='flex'; };
+closeLetterBtn.onclick=()=>{ letterPopup.style.display='none'; };
 
 // Phát nhạc
 const playMusicBtn=document.getElementById('playMusicBtn');
 const music=new Audio('cmsn6.mp3');
-playMusicBtn.addEventListener('click',()=>{music.play()});
+playMusicBtn.onclick=()=>{music.play()};
 
-// Ảnh chạy từ phải sang trái
+// Ảnh chạy
 const nextBtn = document.getElementById('nextBtn');
 const strip = document.getElementById('imageStrip');
 const container = document.getElementById('imageContainer');
 const audio = new Audio('cmsn6.mp3');
 
-nextBtn.addEventListener('click', () => {
+nextBtn.onclick = () => {
   container.style.display = 'flex';
   const duration = 7000;
   strip.animate([
@@ -291,9 +309,8 @@ nextBtn.addEventListener('click', () => {
     { transform: `translateX(-${strip.scrollWidth}px)` }
   ], { duration: duration, easing: 'linear', fill: 'forwards' })
   .onfinish = () => { audio.play(); };
-});
+};
 </script>
 
 </body>
 </html>
-
