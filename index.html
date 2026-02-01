@@ -1,345 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chúc mừng sinh nhật — Thư</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>CLB Ngoại Khóa</title>
+    <link rel="stylesheet" href="style.css">
 
-<style>
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: radial-gradient(circle at top,#ffeaf2,#fff);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow-x: hidden;
-  }
-
-  /* ===== THƯ ===== */
-  .letter {
-    width: 440px;
-    height: 300px;
-    background: linear-gradient(145deg,#ff9db6,#ff6f96);
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 
-      0 25px 60px rgba(255,105,135,0.55),
-      inset 0 6px 18px rgba(255,255,255,0.35);
-    transition: transform .45s ease, box-shadow .45s ease;
-    overflow: hidden;
-    border: 4px solid rgba(255,255,255,0.35);
-  }
-
-  .letter::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg,rgba(255,255,255,.25),transparent);
-  }
-
-  .letter:hover {
-    transform: translateY(-10px) scale(1.08);
-    box-shadow: 
-      0 35px 75px rgba(255,80,120,.7),
-      inset 0 6px 18px rgba(255,255,255,.4);
-  }
-
-  .letter.opening {
-    animation: openLetter .85s forwards ease-in-out;
-  }
-
-  @keyframes openLetter {
-    0% { transform: scale(1); opacity: 1; }
-    45% { transform: scale(1.3); }
-    100% { transform: scale(0); opacity: 0; }
-  }
-
-  .letter-text {
-    color: #fff;
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-    text-shadow: 0 4px 12px rgba(0,0,0,.35);
-    margin-bottom: 18px;
-    z-index: 2;
-  }
-
-  /* ===== TIM TRONG THƯ ===== */
-  .heart-img {
-    position: absolute;
-    bottom: 20px;
-    font-size: 100px;
-    animation: heartPulse 1.8s infinite ease-in-out;
-    filter: drop-shadow(0 6px 14px rgba(255,0,120,.45));
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  @keyframes heartPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.25); }
-    100% { transform: scale(1); }
-  }
-
-  /* ===== TIM BAY ===== */
-  .floating-heart {
-    position: fixed;
-    width: 38px;
-    height: 38px;
-    transform: rotate(-45deg);
-    background: #ff2d55;
-    border-radius: 8px;
-    animation: fly 2.7s ease-out forwards;
-    pointer-events: none;
-    box-shadow: 
-      inset -6px -8px 14px rgba(0,0,0,.25),
-      0 0 12px rgba(255,0,130,.9);
-  }
-
-  .floating-heart::before,
-  .floating-heart::after {
-    content: "";
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    background: #ff2d55;
-    border-radius: 50%;
-  }
-
-  .floating-heart::before { top: -19px; left: 0; }
-  .floating-heart::after { left: 19px; top: 0; }
-
-  @keyframes fly {
-    0% { transform: translateY(0) rotate(-45deg) scale(.7); opacity: 1; }
-    60% { transform: translateY(-160px) rotate(-30deg) scale(1.15); }
-    100% { transform: translateY(-320px) rotate(-60deg) scale(1.35); opacity: 0; }
-  }
-
-  /* ===== LOGIN BOX ===== */
-  .login-box {
-    display: none;
-    width: 100%;
-    max-width: 500px;
-    padding: 30px;
-    border-radius: 22px;
-    background: rgba(255,255,255,.95);
-    box-shadow: 0 18px 45px rgba(255,0,90,.18);
-    margin-top: 26px;
-    animation: fadeInBox .8s ease forwards;
-    backdrop-filter: blur(6px);
-  }
-
-  @keyframes fadeInBox {
-    from { opacity: 0; transform: translateY(30px);}
-    to { opacity: 1; transform: translateY(0);}
-  }
-
-  .login-box h2 {
-    margin: 0 0 6px;
-    color: #ff3d7a;
-  }
-
-  .lead {
-    margin: 0 0 18px;
-    color: #777;
-    font-size: 14px;
-  }
-
-  label {
-    font-size: 13px;
-    color: #999;
-  }
-
-  #account {
-    font-weight: 700;
-    color: #ff408b;
-    font-size: 20px;
-    min-height: 28px;
-    margin-bottom: 10px;
-  }
-
-  input[type=text] {
-    width: 100%;
-    padding: 13px 15px;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ff408b;
-    outline: none;
-  }
-
-  input[type=text]:focus {
-    border-color: #ff7aa2;
-    box-shadow: 0 0 0 3px rgba(255,122,162,.2);
-  }
-
-  .row {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-  }
-
-  .btn {
-    flex: 1;
-    padding: 12px;
-    border-radius: 12px;
-    border: 0;
-    cursor: pointer;
-    font-weight: 700;
-    transition: transform .2s, box-shadow .2s;
-  }
-
-  .btn.login {
-    background: linear-gradient(135deg,#ff5f87,#ff2d6f);
-    color: white;
-    box-shadow: 0 8px 18px rgba(255,45,110,.4);
-  }
-
-  .btn.login:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(255,45,110,.55);
-  }
-
-  .btn.exit {
-    background: transparent;
-    border: 1px solid #eee;
-  }
-
-  .msg {
-    height: 22px;
-    color: #d23a4a;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  /* ===== GÕ CHỮ ===== */
-  .typing-char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(-18px);
-    animation: charAppear .35s forwards;
-  }
-
-  @keyframes charAppear {
-    0% { opacity: 0; transform: translateY(-18px);}
-    70% { opacity: 1; transform: translateY(6px);}
-    100% { opacity: 1; transform: translateY(0);}
-  }
-</style>
 </head>
+
 <body>
+    <div class="header">
+        <img src="truong.jpg" alt="Banner">
+        <div class="header-text">
+            <h1>TRƯỜNG THPT NGUYỄN CÔNG TRỨ</h1>
+        </div>
+    </div>
 
-<audio id="openSound">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_cb9deac89a.mp3">
-</audio>
+    <div class="highlight">
+        <div class="box">
+            <h3>Năng động</h3>
+            <p>Hoạt động năng nổ và hiệu quả</p>
+        </div>
+        <div class="box">
+            <h3>Đam mê</h3>
+            <p>Cháy hết mình trong các cuộc chơi</p>
+        </div>
+        <div class="box">
+            <h3>Tỏa sáng</h3>
+            <p>Giành những giải thưởng cao nhất</p>
+        </div>
+    </div>
 
-<div class="letter" id="letter">
-  <div class="letter-text">Nhấn để mở thư</div>
-  <div class="heart-img">❤️</div>
-</div>
+    <div class="intro">
+        <h2>Giới thiệu</h2>
+        <p>
+            Trường Trung học Phổ thông Nguyễn Công Trứ luôn chú trọng phát triển toàn diện cho học sinh cả về tri thức,
+            thể chất và năng khiếu. Bên cạnh việc học tập trên lớp, các câu lạc bộ ngoại khóa của trường được thành lập
+            nhằm tạo môi trường sinh hoạt lành mạnh, giúp học sinh rèn luyện kỹ năng sống, phát huy sở trường cá nhân và
+            tinh thần đoàn kết.
+        </p>
+    </div>
 
-<div class="login-box" id="loginBox">
-  <h2>Trái tim</h2>
-  <p class="lead">Nhập mật khẩu để truy cập và trái tim đi ní.</p>
+    <div class="main">
 
-  <label>Tài khoản</label>
-  <div id="account"></div>
+        <div class="club-column">
+            <h3>⚽ CLB THỂ THAO</h3>
+            <ul>
+                <li data-slogan="Tinh thần đồng đội là sức mạnh">⚽ CLB Bóng đá</li>
+                <li data-slogan="Đoàn kết – Bền bỉ – Chiến thắng">🏐 CLB Bóng chuyền</li>
+                <li data-slogan="Nhanh – Mạnh – Chính xác">🏀 CLB Bóng rổ</li>
+                <li data-slogan="Phản xạ nhanh – Kỹ thuật cao">🏸 CLB Cầu lông</li>
+                <li data-slogan="Rèn luyện thể chất và ý chí">🥋 CLB Võ thuật</li>
+            </ul>
+            <a href="thethao.html" class="detail-btn">Chi tiết</a>
+        </div>
 
-  <label>Mật khẩu</label>
-  <input type="text" id="password" placeholder="Nhập mật khẩu">
+        <div class="club-column">
+            <h3>🎭 CLB NGHỆ THUẬT</h3>
+            <ul>
+                <li data-slogan="Sáng tạo không giới hạn">🎨 CLB Mỹ thuật</li>
+                <li data-slogan="Giai điệu kết nối cảm xúc">🎵 CLB Âm nhạc</li>
+                <li data-slogan="Tỏa sáng trên từng bước nhảy">💃 CLB Múa</li>
+            </ul>
+            <a href="nghethuat.html" class="detail-btn">Chi tiết</a>
+        </div>
 
-  <div class="row">
-    <button class="btn login" id="loginBtn">Đăng nhập</button>
-    <button class="btn exit" id="exitBtn">Thoát</button>
-  </div>
+    </div>
 
-  <div class="msg" id="msg"></div>
-</div>
-
-<script>
-const letter = document.getElementById('letter');
-const loginBox = document.getElementById('loginBox');
-const accountEl = document.getElementById('account');
-const sound = document.getElementById('openSound');
-const nameStr = 'VuongBaoHan❤';
-
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "floating-heart";
-  heart.style.left = Math.random() * window.innerWidth + "px";
-  heart.style.bottom = "0px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 2700);
-}
-
-letter.addEventListener('click', () => {
-  sound.play();
-  letter.classList.add('opening');
-
-  for (let n = 0; n < 60; n++) {
-    setTimeout(createHeart, n * 45);
-  }
-
-  setTimeout(() => {
-    letter.style.display = 'none';
-    loginBox.style.display = 'block';
-    typeNameSmooth();
-  }, 850);
-});
-
-let i = 0;
-function typeNameSmooth() {
-  if (i < nameStr.length) {
-    const span = document.createElement('span');
-    span.textContent = nameStr[i];
-    span.className = 'typing-char';
-    span.style.animationDelay = i * .12 + 's';
-    accountEl.appendChild(span);
-    i++;
-    setTimeout(typeNameSmooth, 120);
-  }
-}
-
-const loginBtn = document.getElementById('loginBtn');
-const pwd = document.getElementById('password');
-const msg = document.getElementById('msg');
-const CORRECT = '25122007';
-
-loginBtn.addEventListener('click', () => {
-  msg.textContent = '';
-  if (pwd.value === CORRECT) {
-    window.location.href = 'SinhNhat.html';
-  } else {
-    msg.textContent = 'Sai rồi thử lại đi';
-    loginBox.animate([
-      { transform: 'translateX(0)' },
-      { transform: 'translateX(-8px)' },
-      { transform: 'translateX(8px)' },
-      { transform: 'translateX(0)' }
-    ], { duration: 300 });
-  }
-});
-
-document.getElementById('exitBtn').addEventListener('click', () => {
-  window.location.href = 'about:blank';
-});
-
-pwd.addEventListener('keydown', e => {
-  if (e.key === 'Enter') loginBtn.click();
-});
-</script>
-
+    <div class="footer">
+        <div class="footer-left">
+            <h3>📞 Liên hệ</h3>
+            <p>📍 Địa chỉ: Trường THPT Nguyễn Công Trứ</p>
+            <p>✉ Email: thptnguyencongtru@gmail.com</p>
+        </div>
+        <div class="footer-right">
+            <h3>🔎 Xem chi tiết</h3>
+            <a href="thethao.html">⚽ CLB Thể thao</a>
+            <a href="nghethuat.html">🎨 CLB Mỹ thuật</a>
+        </div>
+    </div>
 </body>
+
 </html>

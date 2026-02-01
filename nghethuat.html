@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NGHỆ THUẬT</title>
+    <link rel="stylesheet" href="nghethuat.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="truong.jpg" alt="Banner">
+        <div class="header-text">
+            <h1>TRƯỜNG THPT NGUYỄN CÔNG TRỨ</h1>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <div class="box">
+            <h3>Năng động</h3>
+            <p>Hoạt động năng nổ và hiệu quả</p>
+        </div>
+        <div class="box">
+            <h3>Đam mê</h3>
+            <p>Cháy hết mình trong các cuộc chơi</p>
+        </div>
+        <div class="box">
+            <h3>Tỏa sáng</h3>
+            <p>Giành những giải thưởng cao nhất</p>
+        </div>
+    </div>
+    <div class="main">
+
+        <div class="nav-left">
+            <ul>
+                <li onclick="openClub('mythuat')">🎨 CLB MỸ THUẬT</li>
+                <li onclick="openClub('amnhac')">🎵 CLB ÂM NHẠC</li>
+                <li onclick="openClub('mua')">💃 CLB MÚA</li>
+            </ul>
+        </div>
+
+
+        <div class="member-panel" id="memberPanel">
+            <h3 style="text-align:center;color:#1a4cff">TÊN THÀNH VIÊN</h3>
+            <div class="member-grid">
+                <div class="member-box">1.Ái Mỹ</div>
+                <div class="member-box">2. Phong Nha</div>
+                <div class="member-box">3. Tuyết Mai</div>
+                <div class="member-box">4. Diệu Hường</div>
+                <div class="member-box">5. Thu Phương</div>
+                <div class="member-box">6. Khánh Ngân</div>
+                <div class="member-box">7. Hải Kiên</div>
+                <div class="member-box">8. Khôi Nguyên</div>
+                <div class="member-box">9. Khánh Duy</div>
+            </div>
+        </div>
+
+        <div class="club-content">
+            <div id="welcome" class="welcome">
+                <img src="nghethuat.jpg" alt="Hoạt động nghệ thuật">
+                <h2>🏆 CÂU LẠC BỘ NGHỆ THUẬT</h2>
+                <p>
+                    Hãy chọn một CLB ở bên trái để xem thông tin chi tiết
+                    về hoạt động của câu lạc bộ.
+                </p>
+            </div>
+            <div id="mythuat" class="club">
+                <button class="toggle-btn" onclick="toggleOverlay(this)">👥 Hiện thành viên</button>
+                <div class="member-overlay">
+                    <h3 style="text-align:center;color:#1a4cff">THÀNH VIÊN CLB</h3>
+                    <div class="member-grid">
+                        <div class="member-box">1.Ái Mỹ</div>
+                        <div class="member-box">2. Phong Nha</div>
+                        <div class="member-box">3. Tuyết Mai</div>
+                        <div class="member-box">4. Diệu Hường</div>
+                        <div class="member-box">5. Thu Phương</div>
+                        <div class="member-box">6. Khánh Ngân</div>
+                        <div class="member-box">7. Hải Kiên</div>
+                        <div class="member-box">8. Khôi Nguyên</div>
+                        <div class="member-box">9. Khánh Duy</div>
+                    </div>
+                </div>
+                <img src="mythuat.jpg">
+                <h2>🎨 CLB MỸ THUẬT</h2>
+                <p>
+                    CLB Mỹ thuật là nơi dành cho những học sinh yêu thích hội họa và sáng tạo nghệ thuật. Tham gia CLB,
+                    học sinh được thỏa sức thể hiện ý tưởng, cảm xúc thông qua vẽ tranh và các hoạt động tạo hình. CLB
+                    giúp học sinh rèn luyện óc quan sát, khả năng tư duy thẩm mỹ và sự kiên trì trong quá trình sáng
+                    tác. Bên cạnh đó, các hoạt động của CLB góp phần làm phong phú đời sống tinh thần, tạo không gian
+                    thư giãn sau giờ học. CLB Mỹ thuật còn giúp phát hiện và bồi dưỡng năng khiếu, góp phần nâng cao
+                    chất lượng các phong trào văn hóa, nghệ thuật của nhà trường.
+            </div>
+
+            <div id="amnhac" class="club">
+                <button class="toggle-btn" onclick="toggleOverlay(this)">👥 Hiện thành viên</button>
+                <div class="member-overlay">
+                    <h3 style="text-align:center;color:#1a4cff">THÀNH VIÊN CLB</h3>
+                    <div class="member-grid">
+                        <div class="member-box">1.Ái Mỹ</div>
+                        <div class="member-box">2. Phong Nha</div>
+                        <div class="member-box">3. Tuyết Mai</div>
+                        <div class="member-box">4. Diệu Hường</div>
+                        <div class="member-box">5. Thu Phương</div>
+                        <div class="member-box">6. Khánh Ngân</div>
+                        <div class="member-box">7. Hải Kiên</div>
+                        <div class="member-box">8. Khôi Nguyên</div>
+                        <div class="member-box">9. Khánh Duy</div>
+                    </div>
+                </div>
+                <img src="amnhac.jpg">
+                <h2>🎵 CLB ÂM NHẠC</h2>
+                <p>
+                    CLB Âm nhạc là môi trường giúp học sinh phát triển năng khiếu và niềm đam mê với âm nhạc. Tham gia
+                    CLB, học sinh có cơ hội rèn luyện kỹ năng ca hát, cảm thụ âm nhạc và biểu diễn trước tập thể. Các
+                    hoạt động của CLB giúp học sinh tăng sự tự tin, khả năng giao tiếp và tinh thần đoàn kết. Âm nhạc
+                    còn giúp học sinh thư giãn, giảm áp lực học tập và tạo không khí vui tươi trong trường học. CLB Âm
+                    nhạc đóng vai trò quan trọng trong việc xây dựng đời sống văn hóa học đường, góp phần tạo nên những
+                    chương trình văn nghệ ý nghĩa.
+                </p>
+            </div>
+
+            <div id="mua" class="club">
+                <button class="toggle-btn" onclick="toggleOverlay(this)">👥 Hiện thành viên</button>
+                <div class="member-overlay">
+                    <h3 style="text-align:center;color:#1a4cff">THÀNH VIÊN CLB</h3>
+                    <div class="member-grid">
+                        <div class="member-box">1.Ái Mỹ</div>
+                        <div class="member-box">2. Phong Nha</div>
+                        <div class="member-box">3. Tuyết Mai</div>
+                        <div class="member-box">4. Diệu Hường</div>
+                        <div class="member-box">5. Thu Phương</div>
+                        <div class="member-box">6. Khánh Ngân</div>
+                        <div class="member-box">7. Hải Kiên</div>
+                        <div class="member-box">8. Khôi Nguyên</div>
+                        <div class="member-box">9. Khánh Duy</div>
+                    </div>
+                </div>
+                <img src="mua.jpg">
+                <h2>💃 CLB MÚA</h2>
+                <p>
+                    CLB Múa là nơi giúp học sinh rèn luyện sự dẻo dai, cảm nhận nhịp điệu và khả năng biểu diễn nghệ
+                    thuật. Tham gia CLB, học sinh được học các động tác múa cơ bản, phát triển sự linh hoạt và phối hợp
+                    cơ thể. Các buổi tập luyện giúp học sinh tăng sự tự tin, tính kỷ luật và tinh thần trách nhiệm. CLB
+                    Múa còn tạo cơ hội cho học sinh tham gia biểu diễn trong các hoạt động văn nghệ, lễ hội của nhà
+                    trường. Thông qua đó, học sinh trở nên năng động hơn, tích cực hơn và góp phần xây dựng môi trường
+                    học đường vui tươi, lành mạnh.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openClub(id) {
+            document.getElementById("memberPanel").style.display = "none";
+            document.querySelectorAll(".club").forEach(c => {
+                c.style.display = "none";
+                const o = c.querySelector(".member-overlay");
+                if (o) o.style.display = "none";
+            });
+
+            document.getElementById(id).style.display = "block";
+
+            document.querySelector(".club-content").classList.add("show-club");
+        }
+
+        function toggleOverlay(btn) {
+            const overlay = btn.parentElement.querySelector(".member-overlay");
+            overlay.style.display = overlay.style.display === "block" ? "none" : "block";
+        }
+    </script>
+    <div class="footer">
+        <div class="footer-left">
+            <h3>📞 Liên hệ</h3>
+            <p>📍 Địa chỉ: Trường THPT Nguyễn Công Trứ</p>
+            <p>✉ Email: thptnguyencongtru@gmail.com</p>
+        </div>
+        <div class="footer-right">
+            <h3>🔎 Xem chi tiết</h3>
+            <a href="index.html">🏠 Trang chủ</a>
+            <a href="thethao.html">⚽ CLB Thể thao</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

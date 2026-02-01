@@ -1,0 +1,255 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.header {
+    position: relative;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.header img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.header-text {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.header-text h1 {
+    font-size: 42px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    animation: titleSmooth 1.2s ease-out;
+}
+
+@keyframes titleSmooth {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== KHỐI 3 Ô ===== */
+.highlight {
+    display: flex;
+    justify-content: space-around;
+    background: #f5f7ff;
+    padding: 40px;
+    text-align: center;
+}
+
+.highlight .box {
+    width: 30%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid #1a4cff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.highlight h3 {
+    font-size: 24px;
+    color: #1a4cff;
+    margin-bottom: 10px;
+}
+
+.highlight p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ===== GIỚI THIỆU ===== */
+.intro {
+    padding: 40px;
+    text-align: center;
+}
+
+/* ===== MAIN ===== */
+.main {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    padding: 40px 0;
+}
+
+/* ===== CỘT CLB ===== */
+.club-column {
+    width: 50%;
+    border: 2px solid #cfd8ff;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f9faff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.club-column h3 {
+    margin-top: 0;
+    color: #1a4cff;
+}
+
+/* ⭐ CĂN GIỮA TOÀN BỘ TÊN CLB */
+.club-column ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.club-column li {
+    position: relative;
+    font-size: 18px;
+    margin: 12px 0;
+    border: 2px solid #cfd8ff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* ===== CLB THỂ THAO – SLOGAN BÊN TRÁI ===== */
+.club-column li::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    width: 30px;
+    height: 2px;
+    background: #1a4cff;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+    transition: 0.35s ease;
+}
+
+.club-column li::after {
+    content: attr(data-slogan);
+    position: absolute;
+    right: calc(100% + 30px);
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: #1a4cff;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.35s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== CLB NGHỆ THUẬT – SLOGAN BÊN PHẢI ===== */
+.club-column:last-child li::before {
+    left: 100%;
+    right: auto;
+    transform-origin: left;
+}
+
+.club-column:last-child li::after {
+    left: calc(100% + 30px);
+    right: auto;
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.club-column li:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.club-column li:hover::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
+/* ===== NÚT CHI TIẾT ===== */
+.detail-btn {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 22px;
+    background: #1a4cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.detail-btn:hover {
+    background: #0033cc;
+    transform: translateY(-3px);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #e0e0e0;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    border-top: 4px solid #1a4cff;
+}
+
+.footer-left,
+.footer-right {
+    width: 48%;
+    text-align: center;
+}
+
+.footer-left {
+    border-right: 2px solid #b5b5b5;
+    padding-right: 30px;
+}
+
+.footer-right {
+    padding-left: 30px;
+}
+
+.footer h3 {
+    margin-top: 0;
+    color: #1a4cff;
+    margin-bottom: 10px;
+}
+
+.footer p,
+.footer a {
+    color: #333;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.footer a:hover {
+    color: #1a4cff;
+    text-decoration: underline;
+}
